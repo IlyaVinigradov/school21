@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ROWS_MAX 100
+#define COLUMNS_MAX 100
+
 int main(void) {
     int rows = 0, columns = 0;
     int move;
     int count = 0;
-    int **pointer_array = NULL;
+    int matrix1[ROWS_MAX][COLUMNS_MAX];
+    // int **pointer_array = NULL;
 
     scanf("%d", &move);
     switch (move) {
@@ -15,16 +19,30 @@ int main(void) {
                 printf("n/a");
                 break;
             }
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < columns; j++) {
+                    int temp;
+                    int res = scanf("%d", &temp);
+                    if (res != 1 || temp != (int)temp) {
+                        printf("n/a");
+                        break;
+                    } else {
+                        matrix1[i][j] = temp;
+                    }
+                }
+            }
+
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < columns; j++) {
+                    printf("%d ", matrix1[i][j]);
+                }
+                printf("\n");
+            }
             // for (int i = 0; i < rows; i++) {
             //     for (int j = 0; j < columns; j++) {
-            //         if (scanf("%d", *matrix[i][j]) != 1 || matrix[i][j] != (int)matrix[i][j]) {
-            //             printf("n/a");
-            //             break;
-            //         }
+            //         free(matrix1[i][j]);
             //     }
-            //     printf("\n");
             // }
-            break;
         case 2:
             // if (scanf("%d %d", &rows, &columns) != 2 || rows != (int)rows || columns != (int)columns ||
             // rows < 1 || columns < 1) {
@@ -54,30 +72,30 @@ int main(void) {
             }
             free(singl_array_matrix);
         case 3:
-            scanf("%d %d", &rows, &columns);
-            **pointer_array = malloc(rows * sizeof(int *));
-            int *values_array = malloc(rows * columns * sizeof(int));
-            count = 0;
+            // scanf("%d %d", &rows, &columns);
+            // **pointer_array = malloc(rows * sizeof(int *));
+            // int *values_array = malloc(rows * columns * sizeof(int));
+            // count = 0;
 
-            for (int i = 0; i < rows; i++) {
-                pointer_array[i] = values_array + columns * i;
-            }
+            // for (int i = 0; i < rows; i++) {
+            //     pointer_array[i] = values_array + columns * i;
+            // }
 
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < columns; j++) {
-                    pointer_array[i][j] = ++count;
-                }
-            }
+            // for (int i = 0; i < rows; i++) {
+            //     for (int j = 0; j < columns; j++) {
+            //         pointer_array[i][j] = ++count;
+            //     }
+            // }
 
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < columns; j++) {
-                    printf("%d ", pointer_array[i][j]);
-                }
-                printf("\n");
-            }
+            // for (int i = 0; i < rows; i++) {
+            //     for (int j = 0; j < columns; j++) {
+            //         printf("%d ", pointer_array[i][j]);
+            //     }
+            //     printf("\n");
+            // }
 
-            free(values_array);
-            free(pointer_array);
+            // free(values_array);
+            // free(pointer_array);
         case 4:
             scanf("%d %d", &rows, &columns);
             count = 0;
