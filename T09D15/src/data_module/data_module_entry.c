@@ -1,14 +1,29 @@
-void main()
-{
-    double *data;
-    int n;
-    
-    //Don`t forget to allocate memory !
+#include <stdio.h>
 
-    input(data, n);
+#include "data_process.h"
 
-    if (normalization(data, n))
+int main(void) {
+    double temp;
+    if (scanf("%lf", &temp) != 1 || temp != (int)temp) {
+        printf("ERROR");
+        return 1;
+    }
+    int n = temp;
+    double data[n];
+
+    // Don`t forget to allocate memory !
+
+    if (input(data, n) == -1) {
+        printf("ERROR");
+        return 1;
+    }
+
+    if (normalization(data, n)) {
         output(data, n);
-    else
-        printf("ERROR");  
+        return 0;
+    } else {
+        printf("ERROR");
+        return 1;
+    }
+    return 0;
 }
